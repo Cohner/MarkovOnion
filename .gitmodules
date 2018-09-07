@@ -1,0 +1,6 @@
+[submodule "twitcurl"]
+	path = twitcurl
+	url = https://github.com/swatkat/twitcurl
+[submodule "OpenVision"]
+	path = OpenVision
+	url = https://github.com/pi19404/OpenVision
