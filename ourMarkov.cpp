@@ -18,6 +18,7 @@ public:
         	cout << "Error: File not found or unreadable." << endl;
         	return;
         }
+        prepareString();
         createDictionary();
         createText();
     }
@@ -84,6 +85,27 @@ private:
     		dictionary[key].push_back(element);
     
     	}
+    }
+    
+    void prepareString(){
+    	string nl = "\n";
+	
+		size_t lastNl = 0, firstNl = 0;
+	
+		while( true ){
+			firstNl = fileBuffer.find(nl, lastNl+1);
+			if(firstNl >= fileBuffer.size()){
+				break;
+			}
+			lastNl = fileBuffer.find_first_not_of(nl, firstNl+1)-1;
+	
+			fileBuffer = fileBuffer.replace(firstNl, (lastNl-firstNl)+1, " ");
+	
+		}
+	
+		if( *fileBuffer.rbegin() != ' '){
+			fileBuffer.append(" ");
+		}
     }
     
     string fileBuffer;
